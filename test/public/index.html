@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="/jquery-1.6.1.min.js" type="text/javascript"></script>
+    <script src="/jquery.datetime-0.9.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function() {
+      $.datetime.settings.useShortDateNames = true;
+      $("time").datetime();
+    });
+    </script>
+    <title>Test jquery.datetime</title>
+  </head>
+  <body>
+    <h1>Test jquery.datetime</h1>
+    <div><time datetime="2011-09-14T20:16:40.748Z"/></div>
+    <div><time datetime="2011-05-14T10:59:00.000Z"/></div>
+    <div><time datetime="2011-05-14T01:55:10.151Z"/></div>
+    <div><time datetime="2011-05-13T20:16:40.748Z"/></div>
+    <div><time datetime="2011-05-14T20:16:40.748Z"/></div>
+    <div><time datetime="2011-05-13T21:01:40.748Z"/></div>
+    <div><time datetime="2011-05-12T20:16:40.748Z"/></div>
+    <div><time datetime="2011-02-12T20:16:40.748Z"/></div>
+    <div><time datetime="2011-04-12T20:16:40.748Z"/></div>
+    <div><time datetime="2011-01-12T20:16:40.748Z"/></div>
+    <div><time datetime="2010-04-12T20:16:40.748Z"/></div>
+  </body>
+</html>
