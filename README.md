@@ -6,6 +6,12 @@ jquery.datetime is a jquery plugin that automatically renders human-readable dat
 The library naturally determines whether the time is recent enough or near enough in the future to use relative times, like "3 minutes ago" or "4 minutes from now".  Beyond that, it uses heuristics to display only as much information as is relvant.  For example, on the same day, it shows the time and doesn't bother displaying the date, like "2:45pm".  On other days of the same week, it will show the day and time, but not the day, like "on Monday at 4:55pm".  Beyond these timescales, it shows just the date, and doesn't bother with the time, and only displays the year when relevant.
 
 
+Kudos
+-----
+
+This project was inspired by [jquery.timeago](http://timeago.yarp.com/), written by by Ryan McGeary.
+
+
 Examples
 --------
 
@@ -56,9 +62,33 @@ Details
 - When it's in another year, it will show as "on Wednesday, March 8, 2009"
 
 
-Configuration
--------------
+Settings
+--------
 
-It's easy to configure jquery.datetime to use different strings for internationalizations, or to choose different thresholds for relative vs absolute formatting.
+- *refreshMillis*             (default 60000, once a minute)
+- *relativeLimitMinutes*      (default 20, show relative times within a window of 20 minutes)
+- *businessDateRolloverHour*  (default 0, rollover at midnight.  Set this to 4 to rollover at 4am)
+- *useShortDateNames*         (default false, set to true to use *Wed* and *Mar* instead of *Wednesday* and *March*)
+
+Set any of the above from javascript as follows:
+
+    $.datetime.settings.useShortDateNames = true;
+    $.datetime.settings.businessDateRolloverHour = 4;
+
+
+Internationalization
+--------------------
+
+All strings used by jquery.datetime are configurable.  To modify the language or the date format, set any of the strings.
+
+For example, to say '5 minutes in the past' instead of '5 minutes ago', use:
+
+    $.datetime.settings.strings.suffixAgo = 'in the past';
+
+Also, you can set the words to use for numbers, e.g.
+
+    $.datetime.settings.strings.numberWords = ['zero', 'one', 'two', 'three', 'four'];
+
+That will produce 'two minutes ago' instead of '2 minutes ago', but will still say '5 minutes ago', because a word for 5 was not provided.
 
 

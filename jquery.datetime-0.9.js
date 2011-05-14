@@ -32,7 +32,6 @@
   $.extend($d, {
     settings: {
       refreshMillis: 60000,
-      allowFuture: true,
       relativeLimitMinutes: 20,
       businessDateRolloverHour: 0,
       useShortDateNames: false,
@@ -120,13 +119,13 @@
       }
 
       var millisDiff = now.getTime() - datetime.getTime();
-      if (this.settings.allowFuture) {
-        if (millisDiff < 0) {
-          prefix = $l.prefixFromNow;
-          suffix = $l.suffixFromNow;
-        }
-        millisDiff = Math.abs(millisDiff);
+      var future = false;
+      if (millisDiff < 0) {
+        future = true;
+        prefix = $l.prefixFromNow;
+        suffix = $l.suffixFromNow;
       }
+      millisDiff = Math.abs(millisDiff);
 
       var secondsDiff = millisDiff / 1000;
       var minutesDiff = secondsDiff / 60;
@@ -135,7 +134,7 @@
       var yearsDiff = daysDiff / 365;
 
       var result;
-      var useRelative = (millisDiff >= 0) && ($s.relativeLimitMinutes) && (minutesDiff <= $s.relativeLimitMinutes);
+      var useRelative = ($s.relativeLimitMinutes) && (minutesDiff <= $s.relativeLimitMinutes);
 
       if (useRelative) {
         var words = secondsDiff < 45 && subRel($l.seconds, Math.round(secondsDiff)) ||
