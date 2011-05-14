@@ -34,7 +34,7 @@
       refreshMillis: 60000,
       allowFuture: true,
       relativeLimitMinutes: 20,
-      businessDateRolloverHour: 4,
+      businessDateRolloverHour: 0,
       useShortDateNames: false,
       strings: {
         prefixAgo: null,
