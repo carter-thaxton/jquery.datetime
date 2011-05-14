@@ -6,7 +6,12 @@
     $(function() {
       $.datetime.settings.useShortDateNames = true;
       $.datetime.settings.businessDateRolloverHour = 4;
-      $("time").datetime();
+      
+      function refresh() {
+        $("time").datetime();
+      }
+      refresh();
+      setInterval(refresh, 60000);
     });
     </script>
     <title>Test jquery.datetime</title>

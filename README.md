@@ -8,7 +8,6 @@ The library naturally determines whether the time is recent enough or near enoug
 
 Kudos
 -----
-
 This project was inspired by [jquery.timeago](http://timeago.yarp.com/), written by by Ryan McGeary.
 
 
@@ -39,7 +38,8 @@ Here's an example:
       });
     </script>
 
-This will set the text of these elements to something human-readable, and will even continuously update the strings once a minute, so they remain accurate on a page that's open for a long time.
+This will set the text of these elements to something human-readable.
+You may wish to update these every minute, so they remain accurate on a page that's open for a long time.
 
 
 Business Date
@@ -65,7 +65,6 @@ Details
 Settings
 --------
 
-- *refreshMillis*             (default 60000, once a minute)
 - *relativeLimitMinutes*      (default 20, show relative times within a window of 20 minutes)
 - *businessDateRolloverHour*  (default 0, rollover at midnight.  Set this to 4 to rollover at 4am)
 - *useShortDateNames*         (default false, set to true to use *Wed* and *Mar* instead of *Wednesday* and *March*)
