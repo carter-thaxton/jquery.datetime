@@ -1,4 +1,4 @@
-/*
+/**
  * datetime: a jQuery plugin, version: 0.9.0 (2011-05-13)
  * @requires jQuery v1.2.3 or later
  *
