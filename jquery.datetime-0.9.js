@@ -33,6 +33,7 @@
     settings: {
       relativeLimitMinutes: 20,
       businessDateRolloverHour: 0,
+      timezoneOffsetMinutes: 0,
       useShortDateNames: false,
       strings: {
         prefixAgo: null,
@@ -69,6 +70,13 @@
       var prefix = $l.prefixAgo;
       var suffix = $l.suffixAgo;
       var now = new Date();
+
+      // Adjust all times by timezoneOffsetMinutes, if present
+      if ($s.timezoneOffsetMinutes) {
+        var offsetMillis = $s.timezoneOffsetMinutes * 60000;
+        now = new Date(now.getTime() + offsetMillis);
+        datetime = new Date(datetime.getTime() + offsetMillis);
+      }
 
       function zeroPad(value, digits) {
         var result = String(value);
