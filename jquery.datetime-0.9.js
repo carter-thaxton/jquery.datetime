@@ -69,7 +69,7 @@
       var prefix = $l.prefixAgo;
       var suffix = $l.suffixAgo;
       var now = new Date();
-      
+
       function zeroPad(value, digits) {
         var result = String(value);
         while (result.length < digits) {
@@ -77,13 +77,13 @@
         }
         return result;
       }
-      
+
       function subRel(stringOrFunction, number) {
         var string = $.isFunction(stringOrFunction) ? stringOrFunction(number, datetime) : stringOrFunction;
         var value = ($l.numberNames && $l.numberNames[number]) || number;
         return string.replace(/%d/i, value);
       }
-      
+
       function subAbs(stringOrFunction, datetime, time, day, date, month, year) {
         var string = $.isFunction(stringOrFunction) ? stringOrFunction(datetime) : stringOrFunction;
         string = string.
@@ -94,7 +94,7 @@
           replace(/%year/i, year);
         return string;
       }
-      
+
       function subTime(stringOrFunction, datetime, second, minute, hour, hour12, ampm) {
         var string = $.isFunction(stringOrFunction) ? stringOrFunction(datetime) : stringOrFunction;
         string = string.
@@ -105,7 +105,7 @@
           replace(/%ampm/i, ampm);
         return string;
       }
-      
+
       function businessDate(datetime) {
         var d = new Date(datetime);
         d.setHours(0,0,0,0);
@@ -147,7 +147,7 @@
           daysDiff < 365 && subRel($l.months, Math.floor(daysDiff / 30)) ||
           yearsDiff < 2 && subRel($l.year, 1) ||
           subRel($l.years, Math.floor(yearsDiff));
-          
+
           result = $.trim([prefix, words, suffix].join(" "));
       } else {
         var second = datetime.getSeconds();
@@ -155,22 +155,22 @@
         var hour = datetime.getHours();
         var hour12 = (hour > 12) ? (hour-12) : ((hour == 0) ? 12 : hour);
         var ampm = (hour >= 12) ? "pm" : "am";
-        
+
         var time = subTime($l.time, datetime, second, minute, hour, hour12, ampm);
-        
+
         var bdate = businessDate(datetime);
         var today = businessDate(now);
-        
+
         var dayNames = $s.useShortDateNames ? $l.shortDayNames : $l.dayNames;
         var monthNames = $s.useShortDateNames ? $l.shortMonthNames : $l.monthNames;
-        
+
         var day = dayNames[bdate.getDay()];
         var date = bdate.getDate();
         var month = monthNames[bdate.getMonth()];
         var year = bdate.getFullYear();
-        
+
         var daysMillis = 1000 * 60 * 60 * 24;
-        
+
         var pattern;
         if (bdate.getTime() === today.getTime()) {
           pattern = $l.today;
@@ -183,10 +183,10 @@
         } else {
           pattern = $l.other;
         }
-        
+
         result = subAbs(pattern, datetime, time, day, date, month, year);
       }
-      
+
       return result;
     },
     parse: function(iso8601) {
