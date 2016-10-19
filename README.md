@@ -48,6 +48,12 @@ Business Date
 One of the features of jquery.datetime is to avoid displaying the date for times that are on the same day.  jquery.datetime was created for a business that has hours after midnight, so 1:55am is really the 'same day' as 11:55pm, 2 hours before, for most purposes.  There is a setting called `businessDateRolloverHour`, which may be set to 4 to mean that times until 4:00am are considered the same day for purposes of determining whether to provide the day for additional context.
 
 
+Timezone Offset
+---------------
+
+Normally, jquery.datetime will show all times relative to the current timezone of the browser.  If it is necessary to display timestamps in another timezone, there is a setting called `timezoneOffsetMinutes`.  Setting this to 60, would display all times one hour later than they would normally be displayed, e.g. 2:05pm instead of 1:05pm.  It's up to the user to determine the appropriate offset, based on the application.
+
+
 Details
 -------
 
@@ -68,11 +74,13 @@ Settings
 - *relativeLimitMinutes*      (default 20, show relative times within a window of 20 minutes)
 - *businessDateRolloverHour*  (default 0, rollover at midnight.  Set this to 4 to rollover at 4am)
 - *useShortDateNames*         (default false, set to true to use *Wed* and *Mar* instead of *Wednesday* and *March*)
+- *timezoneOffsetMinutes*     (default 0, no adjustment for timezone.  Set to 60 to show all times one hour later)
 
 Set any of the above from javascript as follows:
 
     $.datetime.settings.useShortDateNames = true;
     $.datetime.settings.businessDateRolloverHour = 4;
+    $.datetime.settings.timezoneOffsetMinutes = 60;
 
 
 Internationalization
