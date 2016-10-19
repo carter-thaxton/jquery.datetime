@@ -1,5 +1,5 @@
 /**
- * datetime: a jQuery plugin, version: 0.9.0 (2011-05-13)
+ * datetime: a jQuery plugin, version: 0.9.1 (2016-10-19)
  * @requires jQuery v1.2.3 or later
  *
  * Datetime is a jQuery plugin that makes it easy to support automatically
@@ -10,12 +10,13 @@
  *
  * Inspired by jquery.timeago, by Ryan McGeary.
  * Enhanced to support date formats more appropriate for a local business,
- * especially one that may have night-time business hours beyond midnight.
+ * especially one that may have night-time business hours beyond midnight,
+ * and require display in other timezones.
  *
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2011, Carter Thaxton (carter.thaxton -[at]- gmail [*dot*] com)
+ * Copyright (c) 2016, Carter Thaxton (carter.thaxton -[at]- gmail [*dot*] com)
  */
 (function($) {
   $.datetime = function(timestamp) {
