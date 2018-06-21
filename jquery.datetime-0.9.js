@@ -1,5 +1,5 @@
 /**
- * datetime: a jQuery plugin, version: 0.9.1 (2016-10-19)
+ * datetime: a jQuery plugin, version: 0.9.2 (2018-06-20)
  * @requires jQuery v1.2.3 or later
  *
  * Datetime is a jQuery plugin that makes it easy to support automatically
@@ -19,13 +19,13 @@
  * Copyright (c) 2016, Carter Thaxton (carter.thaxton -[at]- gmail [*dot*] com)
  */
 (function($) {
-  $.datetime = function(timestamp) {
+  $.datetime = function(timestamp, opts) {
     if (timestamp instanceof Date) {
-      return inWords(timestamp);
+      return inWords(timestamp, opts);
     } else if (typeof timestamp === "string") {
-      return inWords($.datetime.parse(timestamp));
+      return inWords($.datetime.parse(timestamp), opts);
     } else {
-      return inWords($.datetime.extract(timestamp));
+      return inWords($.datetime.extract(timestamp), opts);
     }
   };
   var $d = $.datetime;
@@ -65,8 +65,9 @@
         numberNames: []
       }
     },
-    inWords: function(datetime) {
+    inWords: function(datetime, opts) {
       var $s = this.settings;
+      if (opts) { $s = $.extend(true, {}, $s, opts) }
       var $l = $s.strings;
       var prefix = $l.prefixAgo;
       var suffix = $l.suffixAgo;
@@ -235,8 +236,8 @@
     return result;
   }
 
-  function inWords(date) {
-    return $d.inWords(date);
+  function inWords(date, opts) {
+    return $d.inWords(date, opts);
   }
 
   // fix for IE6 suckage
